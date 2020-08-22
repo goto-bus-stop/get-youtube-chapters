@@ -10,6 +10,9 @@
     "standard": "^14.0.0",
     "tape": "^5.0.0"
   },
+  "engines": {
+    "node": ">= 6"
+  },
   "homepage": "https://github.com/goto-bus-stop/youtube-chapters",
   "keywords": [
     "chapters",
