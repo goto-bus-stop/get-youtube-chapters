@@ -1,10 +1,10 @@
 {
-  "name": "youtube-chapters",
+  "name": "get-youtube-chapters",
   "description": "parse chapters from a youtube video description",
   "version": "0.0.0",
   "author": "Renée Kooi <renee@kooi.me>",
   "bugs": {
-    "url": "https://github.com/goto-bus-stop/youtube-chapters/issues"
+    "url": "https://github.com/goto-bus-stop/get-youtube-chapters/issues"
   },
   "devDependencies": {
     "standard": "^14.0.0",
@@ -13,7 +13,7 @@
   "engines": {
     "node": ">= 6"
   },
-  "homepage": "https://github.com/goto-bus-stop/youtube-chapters",
+  "homepage": "https://github.com/goto-bus-stop/get-youtube-chapters",
   "keywords": [
     "chapters",
     "youtube"
@@ -22,7 +22,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/goto-bus-stop/youtube-chapters.git"
+    "url": "https://github.com/goto-bus-stop/get-youtube-chapters.git"
   },
   "scripts": {
     "test": "standard && node test"

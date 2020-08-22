@@ -1,4 +1,4 @@
-# youtube-chapters
+# get-youtube-chapters
 
 parse chapters from a youtube video description
 
@@ -15,10 +15,10 @@ YouTube now parses "chapters" from video descriptions like this:
 This package aims to implement more-or-less similar parsing so you can figure
 out which chapters a video has on your own.
 
-[npm-image]: https://img.shields.io/npm/v/youtube-chapters.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/package/youtube-chapters
-[travis-image]: https://img.shields.io/travis/com/goto-bus-stop/youtube-chapters.svg?style=flat-square
-[travis-url]: https://travis-ci.com/goto-bus-stop/youtube-chapters
+[npm-image]: https://img.shields.io/npm/v/get-youtube-chapters.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/get-youtube-chapters
+[travis-image]: https://img.shields.io/travis/com/goto-bus-stop/get-youtube-chapters.svg?style=flat-square
+[travis-url]: https://travis-ci.com/goto-bus-stop/get-youtube-chapters
 [standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
 [standard-url]: http://npm.im/standard
 [screenshot-image]: ./.github/screenshot.png
@@ -26,7 +26,7 @@ out which chapters a video has on your own.
 ## Install
 
 ```
-npm install youtube-chapters
+npm install get-youtube-chapters
 ```
 
 ## Usage
@@ -34,7 +34,7 @@ npm install youtube-chapters
 Pass in a description string:
 
 ```js
-var youtubeChapters = require('youtube-chapters')
+var youtubeChapters = require('get-youtube-chapters')
 var chapters = youtubeChapters(`
 This is a sample description for a video with a track listing!
 

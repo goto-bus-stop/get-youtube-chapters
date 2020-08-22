@@ -1,4 +1,4 @@
-# youtube-chapters change log
+# get-youtube-chapters change log
 
 All notable changes to this project will be documented in this file.
 
