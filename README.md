@@ -60,9 +60,9 @@ The return value is an array of `{ start, title }` objects. `start` is the start
 time in seconds. Chapters run until the start of the next chapter, or the end of
 the video.
 
-This package can be a little more loose than YouTube itself is. This can be
-useful if you want to support eg. older album uploads that do not _quite_
-follow the chapter format. To do so, set `extended: true`:
+This package can optionally be a little more loose than YouTube itself is. This
+can be useful if you want to support eg. older album uploads that do not _quite_
+follow the chapter format. Set `extended: true`:
 
 ```js
 var chapters = youtubeChapters(description, {
