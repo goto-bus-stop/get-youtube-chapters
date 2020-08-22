@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "standard": "^14.0.0",
-    "tape": "^4.10.0"
+    "tape": "^5.0.0"
   },
   "homepage": "https://github.com/goto-bus-stop/youtube-chapters",
   "keywords": [
