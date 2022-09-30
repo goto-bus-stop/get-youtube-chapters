@@ -306,3 +306,33 @@ Track listing:
   ])
   t.end()
 })
+
+// https://www.youtube.com/watch?v=GHcWZfsmqsI
+test('with brackets', function (t) {
+  var chapters = get(`
+Hope you enjoy my reaction to season 4 episode 6 of It's Always Sunny in Philadelphia. In this episode the Always Sunny crew continue their plot to fake their death and trick Mac's father.
+
+Want to watch the Full-length Always Sunny reactions, vote in polls and get early access to what I watch next? Subscribe to my Patreon:
+https://www.patreon.com/aidansworld
+
+Follow me on Letterboxd to read my written reviews and view my watchlist:
+https://letterboxd.com/AidanCYT
+
+If you enjoy the video, make sure that you leave a like rating, subscribe to the channel and comment down below with your opinion of this episode.
+
+[0:00] Introduction
+[1:55] Reaction / Commentary
+[13:55] Discussion / Afterthoughts
+
+Like the song that I use for my intro and outro? Check it out here:
+https://youtu.be/LLF3qELRFkw
+
+*Copyright Disclaimer Under Section 107 of the Copyright Act 1976, allowance is made for "fair use" for purposes such as criticism, comment, news reporting, teaching, scholarship, and research. Fair use is a use permitted by copyright statute that might otherwise be infringing. Non-profit, educational, or personal use tips the balance in favor of fair use. NO COPYRIGHT INFRINGEMENT INTENDED. All rights belong to their respective owners.
+  `)
+  t.deepEqual(chapters, [
+    { start: 0, title: 'Introduction' },
+    { start: 115, title: 'Reaction / Commentary' },
+    { start: 835, title: 'Discussion / Afterthoughts' }
+  ])
+  t.end()
+})
