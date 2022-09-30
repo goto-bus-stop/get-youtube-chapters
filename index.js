@@ -64,11 +64,11 @@ function addM (regex) {
 }
 
 // $timestamp $title
-var lawfulParser = makeChapterParser(/^0:00/m, /^(?:(\d+):)?(\d+):(\d+)\s+(.*?)$/, 0, 3)
+var lawfulParser = makeChapterParser(/^0?0:00/m, /^(?:(\d+):)?(\d+):(\d+)\s+(.*?)$/, 0, 3)
 // [$timestamp] $title
-var bracketsParser = makeChapterParser(/^\[0:00\]/m, /^\[(?:(\d+):)?(\d+):(\d+)\]\s+(.*?)$/, 0, 3)
+var bracketsParser = makeChapterParser(/^\[0?0:00\]/m, /^\[(?:(\d+):)?(\d+):(\d+)\]\s+(.*?)$/, 0, 3)
 // ($timestamp) $title
-var parensParser = makeChapterParser(/^\(0:00\)/m, /^\((?:(\d+):)?(\d+):(\d+)\)\s+(.*?)$/, 0, 3)
+var parensParser = makeChapterParser(/^\(0?0:00\)/m, /^\((?:(\d+):)?(\d+):(\d+)\)\s+(.*?)$/, 0, 3)
 // ($track_id. )$title $timestamp
 var postfixRx = /^(?:\d+\.\s+)?(.*)\s+(?:(\d+):)?(\d+):(\d+)$/
 var postfixParser = makeChapterParser(addM(postfixRx), postfixRx, 1, 0)

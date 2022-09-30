@@ -67,6 +67,42 @@ Chapters:
   t.end()
 })
 
+test('0-prefixed', function (t) {
+  var chapters = get(`
+Chapters:
+00:00 Intro
+00:21 Who were you ten years ago?
+01:00 How would you describe yourself as a creator?
+01:25 Where do you see yourself in ten years?
+02:05 Best fan experience at Vidcon?
+02:47 What's the first YouTube video you watched?
+03:22 Which YouTube creator will be an icon in ten years?
+04:05 What's your YouTube video guilty pleasure?
+04:55 Describe your very first video capture set-up
+05:39 If you weren't a creator what would you do?
+06:05 What would your fans be surprised to learn about you?
+06:31 How do you want to be remembered?
+06:57 What do you hope changes and stays the same in ten years?
+  `)
+
+  t.deepEqual(chapters, [
+    { start: 0, title: 'Intro' },
+    { start: 21, title: 'Who were you ten years ago?' },
+    { start: 60, title: 'How would you describe yourself as a creator?' },
+    { start: 85, title: 'Where do you see yourself in ten years?' },
+    { start: 125, title: 'Best fan experience at Vidcon?' },
+    { start: 167, title: "What's the first YouTube video you watched?" },
+    { start: 202, title: 'Which YouTube creator will be an icon in ten years?' },
+    { start: 245, title: "What's your YouTube video guilty pleasure?" },
+    { start: 295, title: 'Describe your very first video capture set-up' },
+    { start: 339, title: "If you weren't a creator what would you do?" },
+    { start: 365, title: 'What would your fans be surprised to learn about you?' },
+    { start: 391, title: 'How do you want to be remembered?' },
+    { start: 417, title: 'What do you hope changes and stays the same in ten years?' }
+  ])
+  t.end()
+})
+
 // https://www.youtube.com/watch?v=W750EAMapXg
 test('postfix', function (t) {
   var chapters = get(`
