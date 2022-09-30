@@ -20,26 +20,26 @@ function makeChapterParser (startRx, lineRx, timestampIndex, textIndex) {
   textIndex += 1
 
   return function (description) {
-    var chapters = []
+    const chapters = []
 
-    var firstTimestamp = description.search(startRx)
+    const firstTimestamp = description.search(startRx)
     if (firstTimestamp === -1) {
       return chapters
     }
 
-    var chapterLines = description.slice(firstTimestamp).split('\n')
-    for (var i = 0; i < chapterLines.length; i += 1) {
-      var line = chapterLines[i]
+    const chapterLines = description.slice(firstTimestamp).split('\n')
+    for (let i = 0; i < chapterLines.length; i += 1) {
+      const line = chapterLines[i]
 
-      var match = lineRx.exec(line)
+      const match = lineRx.exec(line)
       if (!match) {
         break
       }
 
-      var hours = match[timestampIndex] !== undefined ? parseInt(match[timestampIndex], 10) : 0
-      var minutes = parseInt(match[timestampIndex + 1], 10)
-      var seconds = parseInt(match[timestampIndex + 2], 10)
-      var title = match[textIndex].trim()
+      const hours = match[timestampIndex] !== undefined ? parseInt(match[timestampIndex], 10) : 0
+      const minutes = parseInt(match[timestampIndex + 1], 10)
+      const seconds = parseInt(match[timestampIndex + 2], 10)
+      const title = match[textIndex].trim()
 
       chapters.push({
         start: hours * 60 * 60 + minutes * 60 + seconds,
@@ -64,23 +64,23 @@ function addM (regex) {
 }
 
 // $timestamp $title
-var lawfulParser = makeChapterParser(/^0?0:00/m, /^(?:(\d+):)?(\d+):(\d+)\s+(.*?)$/, 0, 3)
+const lawfulParser = makeChapterParser(/^0?0:00/m, /^(?:(\d+):)?(\d+):(\d+)\s+(.*?)$/, 0, 3)
 // [$timestamp] $title
-var bracketsParser = makeChapterParser(/^\[0?0:00\]/m, /^\[(?:(\d+):)?(\d+):(\d+)\]\s+(.*?)$/, 0, 3)
+const bracketsParser = makeChapterParser(/^\[0?0:00\]/m, /^\[(?:(\d+):)?(\d+):(\d+)\]\s+(.*?)$/, 0, 3)
 // ($timestamp) $title
-var parensParser = makeChapterParser(/^\(0?0:00\)/m, /^\((?:(\d+):)?(\d+):(\d+)\)\s+(.*?)$/, 0, 3)
+const parensParser = makeChapterParser(/^\(0?0:00\)/m, /^\((?:(\d+):)?(\d+):(\d+)\)\s+(.*?)$/, 0, 3)
 // ($track_id. )$title $timestamp
-var postfixRx = /^(?:\d+\.\s+)?(.*)\s+(?:(\d+):)?(\d+):(\d+)$/
-var postfixParser = makeChapterParser(addM(postfixRx), postfixRx, 1, 0)
+const postfixRx = /^(?:\d+\.\s+)?(.*)\s+(?:(\d+):)?(\d+):(\d+)$/
+const postfixParser = makeChapterParser(addM(postfixRx), postfixRx, 1, 0)
 // ($track_id. )$title ($timestamp)
-var postfixParenRx = /^(?:\d+\.\s+)?(.*)\s+\(\s*(?:(\d+):)?(\d+):(\d+)\s*\)$/
-var postfixParenParser = makeChapterParser(addM(postfixParenRx), postfixParenRx, 1, 0)
+const postfixParenRx = /^(?:\d+\.\s+)?(.*)\s+\(\s*(?:(\d+):)?(\d+):(\d+)\s*\)$/
+const postfixParenParser = makeChapterParser(addM(postfixParenRx), postfixParenRx, 1, 0)
 // $track_id. $timestamp $title
-var prefixRx = /^\d+\.\s+(?:(\d+):)?(\d+):(\d+)\s+(.*)$/
-var prefixParser = makeChapterParser(addM(prefixRx), prefixRx, 0, 3)
+const prefixRx = /^\d+\.\s+(?:(\d+):)?(\d+):(\d+)\s+(.*)$/
+const prefixParser = makeChapterParser(addM(prefixRx), prefixRx, 0, 3)
 
 module.exports = function parseYouTubeChapters (description) {
-  var chapters = lawfulParser(description)
+  let chapters = lawfulParser(description)
   if (chapters.length === 0) chapters = bracketsParser(description)
   if (chapters.length === 0) chapters = parensParser(description)
   if (chapters.length === 0) chapters = postfixParser(description)

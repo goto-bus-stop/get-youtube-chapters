@@ -1,10 +1,10 @@
-var test = require('tape')
-var get = require('.')
+const test = require('tape')
+const get = require('.')
 
 // Example video from https://support.google.com/youtube/answer/9884579
 // https://www.youtube.com/watch?v=t67_zAg5vvI
 test('lawful', function (t) {
-  var chapters = get(`
+  const chapters = get(`
 Where will they be in 10 years? What was their first YouTube video camera set up? Watch your fave creators dish it all out during VidCon 2019!
 
 AdelaineMorin - https://www.youtube.com/user/C0OK1EMO...
@@ -68,7 +68,7 @@ Chapters:
 })
 
 test('0-prefixed', function (t) {
-  var chapters = get(`
+  const chapters = get(`
 Chapters:
 00:00 Intro
 00:21 Who were you ten years ago?
@@ -105,7 +105,7 @@ Chapters:
 
 // https://www.youtube.com/watch?v=W750EAMapXg
 test('postfix', function (t) {
-  var chapters = get(`
+  const chapters = get(`
 2nd album by korean artist 'Mid-Air Thief'.
 Genre: Folktronica, Neo-Psychedelia, Psychedelic Pop
 
@@ -134,7 +134,7 @@ Genre: Folktronica, Neo-Psychedelia, Psychedelic Pop
 
 // https://www.youtube.com/watch?v=cJ1yFhjRnNc
 test('postfix 2', function (t) {
-  var chapters = get(`
+  const chapters = get(`
 Joanna Newsom - Ys (Full Album)
 
 Tracks
@@ -158,7 +158,7 @@ Tracks
 
 // https://www.youtube.com/watch?v=LEVI37XfL8Q
 test('postfix parens', function (t) {
-  var chapters = get(`
+  const chapters = get(`
 “Migration” full album by Bonobo :
 https://bonobomusic.bandcamp.com/albu...
 
@@ -216,7 +216,7 @@ listplay.contact@gmail.com
 
 // https://www.youtube.com/watch?v=Xw5AiRVqfqk
 test('prefix', function (t) {
-  var chapters = get(`
+  const chapters = get(`
 320kbps
 1. 0:00 Xtal
 2. 4:53 Tha
@@ -254,7 +254,7 @@ test('prefix', function (t) {
 // this is currently not supported by youtube, and also not by us :)
 // https://www.youtube.com/watch?v=fZlNt05dCX8
 test.skip('prefix dash', function (t) {
-  var chapters = get(`
+  const chapters = get(`
 Velocity : Design : Comfort is the second album from Sweet Trip, released in 2003 via the Darla Records imprint. 
 
 → https://darla.com/products/sweet-trip...
@@ -308,7 +308,7 @@ Track listing:
 
 // https://www.youtube.com/watch?v=GHcWZfsmqsI
 test('with brackets', function (t) {
-  var chapters = get(`
+  const chapters = get(`
 Hope you enjoy my reaction to season 4 episode 6 of It's Always Sunny in Philadelphia. In this episode the Always Sunny crew continue their plot to fake their death and trick Mac's father.
 
 Want to watch the Full-length Always Sunny reactions, vote in polls and get early access to what I watch next? Subscribe to my Patreon:
