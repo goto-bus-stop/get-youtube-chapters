@@ -214,7 +214,6 @@ listplay.contact@gmail.com
   t.end()
 })
 
-// this is currently not supported by youtube
 // https://www.youtube.com/watch?v=Xw5AiRVqfqk
 test('prefix', function (t) {
   var chapters = get(`
@@ -232,7 +231,7 @@ test('prefix', function (t) {
 11. 55:35 Hedphelym
 12. 1:01:39 Delphium
 13. 1:07:09 Actium
-  `, { extended: true })
+  `)
 
   t.deepEqual(chapters, [
     { start: 0, title: 'Xtal' },

@@ -79,16 +79,13 @@ var postfixParenParser = makeChapterParser(addM(postfixParenRx), postfixParenRx,
 var prefixRx = /^\d+\.\s+(?:(\d+):)?(\d+):(\d+)\s+(.*)$/
 var prefixParser = makeChapterParser(addM(prefixRx), prefixRx, 0, 3)
 
-module.exports = function parseYouTubeChapters (description, options) {
-  var extended = options && options.extended
-
+module.exports = function parseYouTubeChapters (description) {
   var chapters = lawfulParser(description)
   if (chapters.length === 0) chapters = bracketsParser(description)
   if (chapters.length === 0) chapters = parensParser(description)
   if (chapters.length === 0) chapters = postfixParser(description)
   if (chapters.length === 0) chapters = postfixParenParser(description)
-  // YouTube doesn't support prefix parsing
-  if (chapters.length === 0 && extended) chapters = prefixParser(description)
+  if (chapters.length === 0) chapters = prefixParser(description)
 
   return chapters
 }
