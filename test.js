@@ -67,7 +67,7 @@ Chapters:
   t.end()
 })
 
-test('lawful 2', function (t) {
+test('0-prefixed', function (t) {
   var chapters = get(`
 Chapters:
 00:00 Intro
