@@ -65,6 +65,10 @@ function addM (regex) {
 
 // $timestamp $title
 var lawfulParser = makeChapterParser(/^0:00/m, /^(?:(\d+):)?(\d+):(\d+)\s+(.*?)$/, 0, 3)
+// [$timestamp] $title
+var bracketsParser = makeChapterParser(/^\[0:00\]/m, /^\[(?:(\d+):)?(\d+):(\d+)\]\s+(.*?)$/, 0, 3)
+// ($timestamp) $title
+var parensParser = makeChapterParser(/^\(0:00\)/m, /^\((?:(\d+):)?(\d+):(\d+)\)\s+(.*?)$/, 0, 3)
 // ($track_id. )$title $timestamp
 var postfixRx = /^(?:\d+\.\s+)?(.*)\s+(?:(\d+):)?(\d+):(\d+)$/
 var postfixParser = makeChapterParser(addM(postfixRx), postfixRx, 1, 0)
@@ -79,6 +83,8 @@ module.exports = function parseYouTubeChapters (description, options) {
   var extended = options && options.extended
 
   var chapters = lawfulParser(description)
+  if (chapters.length === 0) chapters = bracketsParser(description)
+  if (chapters.length === 0) chapters = parensParser(description)
   if (chapters.length === 0) chapters = postfixParser(description)
   if (chapters.length === 0) chapters = postfixParenParser(description)
   // YouTube doesn't support prefix parsing
