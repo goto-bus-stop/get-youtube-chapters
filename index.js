@@ -43,7 +43,8 @@ function makeChapterParser (startRx, lineRx, timestampIndex, textIndex) {
 
       chapters.push({
         start: hours * 60 * 60 + minutes * 60 + seconds,
-        title: title.trim()
+        title: title.trim(),
+        line: line,
       })
     }
 
